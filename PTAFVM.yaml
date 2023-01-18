@@ -1,0 +1,1545 @@
+zabbix_export:
+  version: '5.4'
+  date: '2023-01-18T09:32:21Z'
+  groups:
+    -
+      uuid: dc579cd7a1a34222933f24f52a68bcd8
+      name: 'Linux servers'
+  templates:
+    -
+      uuid: 578439bc4c8045d3822713ce70913576
+      template: PTAFVM
+      name: PTAFVM
+      groups:
+        -
+          name: 'Linux servers'
+      items:
+        -
+          uuid: 242034ed4d6447b4bc0d8ceef7336e5b
+          name: 'PTAF Service : aksusbd'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.28
+          key: aksusbd
+          delay: 2m
+          description: 'Сервис лицензирования продукта'
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 426d21a07d824642bfd46b8761bd4bbf
+              expression: 'last(/PTAFVM/aksusbd,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/aksusbd,#3)=1'
+              name: 'Сервис aksusbd остановлен'
+              event_name: aksusbd
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 12f1c4c88ea74f93b9f6aea7c224b02f
+          name: 'PTAF Service : autodiscovery'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.27
+          key: autodiscovery
+          delay: 2m
+          description: 'Сервис используется для autowizard'
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 50beb3ed4d9a4c8384abf338aee7abd7
+              expression: 'last(/PTAFVM/autodiscovery,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/autodiscovery,#3)=1'
+              name: 'Сервис autodiscovery остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 1e7fd77dd46e4f9082774fed8c28acbe
+          name: 'PTAF Service : c-icap'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.24
+          key: c-icap
+          delay: 2m
+          description: |
+            ICAP-сервер для сервисов работающих по протоколу ICAP
+            
+            Лог-файлы:
+            /var/log/c-icap/access.log
+            /var/log/c-icap/server.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: fc04d210dfc747bfb90eaf64aa885e17
+              expression: 'last(/PTAFVM/c-icap,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/c-icap,#3)=1'
+              name: 'Сервис c-icap остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: eb4591700d7c404d8940de4cc53a335f
+          name: 'PTAF Service : carbon'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.16
+          key: carbon
+          delay: 2m
+          description: "Сервис хранения метрик\_для страницы мониторинга"
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 08ea20b5b6484e119f00c2558c852dfb
+              expression: 'last(/PTAFVM/carbon,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/carbon,#3)=1'
+              name: 'Сервис carbon остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 78f93b4792994801a38c2a972e214264
+          name: 'PTAF Service : celery'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.12
+          key: celery
+          description: |
+            Вспомогательный сервис распределенного выполнения задач
+            
+            Лог-файлы:
+            /var/log/celery/worker1.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: a8e39e5c17b442f082e186de5a48ff14
+              expression: 'last(/PTAFVM/celery,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/celery,#3)=1'
+              name: 'Сервис celery остановлен'
+              priority: AVERAGE
+              tags:
+                -
+                  tag: Критичность
+                  value: Средний
+        -
+          uuid: 87ff4fd792544639a5c136814e5d870a
+          name: 'PTAF Service : celerybeat'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.13
+          key: celerybeat
+          description: |
+            Сервис распределенного выполнения задач
+            
+            Лог-файлы:
+            /var/log/celerybeat/celerybeat.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 2bd27a3a392a4bee8fdea66443af3e05
+              expression: 'last(/PTAFVM/celerybeat,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/celerybeat,#3)=1'
+              name: 'Сервис celerybeat остановлен'
+              priority: AVERAGE
+              tags:
+                -
+                  tag: Критичность
+                  value: Средний
+        -
+          uuid: 83451f18763840568d62a48ed53bf7cf
+          name: 'PTAF Service : clamav-fresh'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.26
+          key: clamav-fresh
+          delay: 2m
+          description: |
+            Сервис обновления базы данных для антивируса ClamAV
+            
+            Лог-файлы:
+            /var/log/clamav/clamav.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: bf5c72e761d745eca952a8a1e1d005d1
+              expression: 'last(/PTAFVM/clamav-fresh,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/clamav-fresh,#3)=1'
+              name: 'Сервис clamav-fresh остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: a6512996724043f7ac6ee7f5fc697e23
+          name: 'PTAF Service : clamd'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.25
+          key: clamd
+          delay: 2m
+          description: |
+            Встроенный антивирус ClamAV
+            
+            Лог-файлы:
+            /var/log/clamav/clamav.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 4dde7397f67241739e2a7638bca960bf
+              expression: 'last(/PTAFVM/clamd,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/clamd,#3)=1'
+              name: 'Сервис clamd остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: a04f1552ccd442839f2cd4d43f76d40c
+          name: 'Процент загрузки CPU - waf-nginx'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.15.4
+          key: cpuPercent.waf-nginx
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Процент загрузки CPU'
+        -
+          uuid: ff302b49058845beaa812d700c5bdd5a
+          name: 'Время последного обновления данных PTAF'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.17.24
+          key: dataCollected
+          delay: 1440m
+          trends: '0'
+          value_type: TEXT
+        -
+          uuid: e1b87e65e28d4d6eb0e364f4d0ad324d
+          name: 'PTAF Service : diamond'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.15
+          key: diamond
+          description: 'Сервис сбора метрик для страницы мониторинга'
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: a7ca2104b6b741f78fc43045e4d537c6
+              expression: 'last(/PTAFVM/diamond,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/diamond,#3)=1'
+              name: 'Сервис diamond остановлен'
+              priority: AVERAGE
+              tags:
+                -
+                  tag: Критичность
+                  value: Средний
+        -
+          uuid: f160730c4bd442c79f7672a3bdb94aba
+          name: 'PTAF Service : elasticsearch'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.22
+          key: elasticsearch
+          delay: 30s
+          description: |
+            База данных для хранения инцидентов безопасности (events, alerts, vulnerabilities)
+            
+            Диагностика и известные проблемы:
+            Elasticsearch: troubleshooting 
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1006/227
+            Elasticsearch: очистка данных
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1014/227
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: f1febeb5642b4299807f8da0e26ff24e
+              expression: 'last(/PTAFVM/elasticsearch,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/elasticsearch,#3)=1'
+              name: 'Сервис elasticsearch остановлен'
+              priority: HIGH
+              tags:
+                -
+                  tag: Критичность
+                  value: Высокий
+        -
+          uuid: 8ea78ecaed6443aeac548797f6f62420
+          name: 'PTAF Service : graphite'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.8
+          key: graphite
+          description: "Сервис визуализации данных\_для страницы мониторинга"
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 47f5011365da40a2bc1648d3f6674eae
+              expression: 'last(/PTAFVM/graphite,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/graphite,#3)=1'
+              name: 'Сервис graphite остановлен'
+              priority: AVERAGE
+              tags:
+                -
+                  tag: Критичность
+                  value: Средний
+        -
+          uuid: 4ea1b38a2ee94a3a9bc0e67fd3ac8a6d
+          name: 'PTAF Service : keepalived'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.21
+          key: keepalived
+          delay: 2m
+          description: |
+            Сервис для управления Virtual IPs
+            
+            Диагностика и известные проблемы:
+            Virtual IP: troubleshooting
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1104/254/
+            Лог-файлы:
+            /var/log/syslog
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 6ea86f72c1994bfebd69ae17fad96081
+              expression: 'last(/PTAFVM/keepalived,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/keepalived,#3)=1'
+              name: 'Сервис keepalived остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 631903a8e6194941920a7f1df6cfc284
+          name: 'PTAF Service : libreoffice'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.17
+          key: libreoffice
+          delay: 2m
+          description: 'Сервис для генерации pdf отчетов'
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: c5c12128b91c47d19c489282cc52e95b
+              expression: 'last(/PTAFVM/libreoffice,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/libreoffice,#3)=1'
+              name: 'Сервис libreoffice остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 4e1864a178d04deb9f7a1a2e7db9832e
+          name: 'Занимаемый объем памяти ОЗУ - carbon'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.16
+          key: memory.carbon
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: fd824bb883614b97859c2ec6cba113f3
+          name: 'Занимаемый объем памяти ОЗУ - celery'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.12
+          key: memory.celery
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: d495d812296f41c394481ff9d8c29215
+          name: 'Занимаемый объем памяти ОЗУ - celerybeat'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.13
+          key: memory.celerybeat
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 1c21a809a76b465daa39e6cf511a46fb
+          name: 'Занимаемый объем памяти ОЗУ - diamond'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.15
+          key: memory.diamond
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 3b93b5ec9b304bcfa2ac4581183aa6ae
+          name: 'Занимаемый объем памяти ОЗУ - elasticsearch'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.22
+          key: memory.elasticsearch
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: a815584d665740f5ad0c9e11cc32885b
+          name: 'Занимаемый объем памяти ОЗУ - graphite'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.8
+          key: memory.graphite
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: e7334b3e7b484902966232cf4a7da607
+          name: 'Занимаемый объем памяти ОЗУ - keepalived'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.12
+          key: memory.keepalived
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 2d113c8a2b094e2eacab977c60b02878
+          name: 'Занимаемый объем памяти ОЗУ - libreoffice'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.17
+          key: memory.libreoffice
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 7763e4ddc3e44278a297e4f184a52beb
+          name: 'Занимаемый объем памяти ОЗУ - nginx'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.11
+          key: memory.nginx
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: c24437923e6c422e974a146c61b00551
+          name: 'Занимаемый объем памяти ОЗУ - redis'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.14
+          key: memory.redis
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 8ccf0bd7541f46268650f6226cb4e72f
+          name: 'Занимаемый объем памяти ОЗУ - taperedng'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.19
+          key: memory.taperedng
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 4aaa83de81f4450190558c1f73d5c31c
+          name: 'Занимаемый объем памяти ОЗУ - waf-correlator'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.23
+          key: memory.waf-correlator
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 4e6cc9fdacd64e9ca978de5b453f81c5
+          name: 'Занимаемый объем памяти ОЗУ - waf-gowaf'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.4
+          key: memory.waf-gowaf
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 4258ca099be44ff0b4c64cc2474121ea
+          name: 'Занимаемый объем памяти ОЗУ - waf-nginx'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.6
+          key: memory.waf-nginx
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 207df376bc9f4a54ba0d3bea6274b0b7
+          name: 'Занимаемый объем памяти ОЗУ - waf-trainer'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.2
+          key: memory.waf-trainer
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 991446a4d2204229aee88ade1f8bd79d
+          name: 'Занимаемый объем памяти ОЗУ - waf-wafd'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.3
+          key: memory.waf-wafd
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 1a97eb8ecf3d45df8c732eb262b8e62c
+          name: 'Занимаемый объем памяти ОЗУ - waf_api'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.9
+          key: memory.waf_api
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: d008c4b10e5a4f8a9a24c0437a027781
+          name: 'Занимаемый объем памяти ОЗУ - wsc_api'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.11.10
+          key: memory.wsc_api
+          value_type: FLOAT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '[+-]?(\d*\.\d+|\d+\.\d*|\d+)[^[]*$'
+                - \1
+          tags:
+            -
+              tag: Application
+              value: 'Занимаемый объем памяти ОЗУ'
+        -
+          uuid: 52f4c5f01c1a4699a46e4a62fd2cbe69
+          name: 'PTAF Service : mongod'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.20
+          key: mongod
+          delay: 30s
+          description: |
+            База данных для хранения всей конфигурации PTAF
+            
+            Диагностика и известные проблемы:
+            MongoDB: troubleshooting 
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1096/227
+            MongoDB: очистка данных
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1010/227
+            MongoDB: изменение размера OpLog
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1009/227
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 342002898eb94d15b0bf29c50206dcd4
+              expression: 'last(/PTAFVM/mongod,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/mongod,#3)=1'
+              name: 'Сервис mongod остановлен'
+              priority: HIGH
+              tags:
+                -
+                  tag: Критичность
+                  value: Высокий
+        -
+          uuid: 48f95af41c684596a8e74b81c7b347eb
+          name: 'PTAF Service : nginx'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.11
+          key: nginx
+          delay: 30s
+          description: |
+            Frontend-сервер для web интерфейса PTAF
+            
+            Лог-файлы:
+            /var/log/nginx/access.log
+            /var/log/nginx/error.log
+            /var/log/nginx/graphite.access.log
+            /var/log/nginx/graphite.error.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 868b93fae35d49c69ec2f10a9507c55b
+              expression: 'last(/PTAFVM/nginx,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/nginx,#3)=1'
+              name: 'Сервис nginx остановлен'
+              priority: HIGH
+              tags:
+                -
+                  tag: Критичность
+                  value: Высокий
+        -
+          uuid: c430cdfdb6854c86bb788ee490b7b389
+          name: 'PTAF License'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.2
+          key: ptafLicense
+          delay: 60m
+          description: 'Обновление лицензии кажные 88 дней'
+          triggers:
+            -
+              uuid: 74177aeaedd149a782874051a1f09f9f
+              expression: last(/PTAFVM/ptafLicense)<14
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: last(/PTAFVM/ptafLicense)>80
+              name: 'Обновить лицензию PTAF <14days'
+              priority: HIGH
+              tags:
+                -
+                  tag: Критичность
+                  value: Высокий
+        -
+          uuid: 96c3c07997e94d9294ac8f2fbfdbbb66
+          name: 'PTAF Service : ptbbs-controller'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.27
+          key: ptbbs-controller
+          delay: 2m
+          description: 'Сервис для выполнения задач WebEngine (BBS)'
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 17a5cb8c753c42528f5304421e8a759b
+              expression: 'last(/PTAFVM/ptbbs-controller,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/ptbbs-controller,#3)<>1'
+              name: 'Сервис ptbbs-controller остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 7b1dc9a417a84b349a53172d8259e9b3
+          name: 'PTAF Service : ptbbs-service'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.31
+          key: ptbbs-service
+          delay: 2m
+          description: 'Сервис для выполнения задач WebEngine (BBS)'
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 01da70d2c341492b8c9ad591086360e9
+              expression: 'last(/PTAFVM/ptbbs-service,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/ptbbs-service,#3)<>1'
+              name: 'Сервис ptbbs-service остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 9bc46e294fb74c46a5d58acd85f0dc52
+          name: 'PTAF Service : rabbitmq-server'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.30
+          key: rabbitmq-server
+          delay: 2m
+          description: |
+            Сервис для хранения очередей на запуск задач по сканированию приложений через WebEngine (BBS)
+            
+            Диагностика проблем: 
+            
+            RabbitMQ: troubleshooting
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1103/254/
+            
+            Лог-файлы
+            /var/log/rabbitmq/*
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 1f582b182807481ebda99ef8975bfaf1
+              expression: 'last(/PTAFVM/rabbitmq-server,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/rabbitmq-server,#3)=1'
+              name: 'Сервис rabbitmq-server остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 0c5a70d546604f3eab028c15541b71b6
+          name: 'PTAF Service : redis'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.14
+          key: redis
+          delay: 30s
+          description: |
+            БД для хранения кэша корреляций и очереди задач celery
+            
+            Диагностика проблем: 
+            Redis: troubleshooting
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1105/254
+            
+            Лог-файлы:
+            /var/log/redis/redis-server.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 4dfae426f26b46ebacb7b356cd676d1a
+              expression: 'last(/PTAFVM/redis,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/redis,#3)=1'
+              name: 'Сервис redis остановлен'
+              priority: HIGH
+              tags:
+                -
+                  tag: Критичность
+                  value: Высокий
+        -
+          uuid: 56116e508aac42a0b3d3a6c341aca850
+          name: 'PTAF Service : taperedng'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.19
+          key: taperedng
+          delay: 2m
+          description: |
+            Сервис, реализующий работу WAF в режиме сниффера
+            
+            Диагностика проблем: 
+            
+            Диагностика основных проблем PT AF => Диагностика неисправностей в режиме сниффера
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1100/254
+            
+            Лог-файлы
+            /var/log/waf/taperedng.log #лог самого сервиса
+            /var/log/waf/stats.log #статистика по сессиям
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 2a31d64fe8b34a9c8a764b29d2063603
+              expression: 'last(/PTAFVM/taperedng,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/taperedng,#3)=1'
+              name: 'Сервис taperedng остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 89b221e3b7da4eb8ad5214daa4f29ace
+          name: 'PTAF Service : tasks-control'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.29
+          key: tasks-control
+          delay: 2m
+          description: |
+            Вспомогательный сервис распределенного выполнения задач
+            
+            Лог-файлы:
+            /var/log/celery_control/control.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 9295b4f51bc64db48155b34c170fb20d
+              expression: 'last(/PTAFVM/tasks-control,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/tasks-control,#3)=1'
+              name: 'Сервис tasks-control остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: d2507a6c5c9c4567941d1e9e66d913e4
+          name: 'PTAF Service : tproxy-automangle'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.18
+          key: tproxy-automangle
+          description: |
+            Сервис для отслеживания MAC-адресов защищаемых узлов в режиме transparent proxy
+            
+            Лог-файлы
+            /var/log/waf/tproxy-automangle.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 120103b952df4be99151f1611c0c4da7
+              expression: 'last(/PTAFVM/tproxy-automangle,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/tproxy-automangle,#3)=1'
+              name: 'Сервис tproxy-automangle остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 35d4b324de0e43339aa9ebea63fcbdb1
+          name: 'PTAF Service : ui'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.7
+          key: ui
+          delay: 2m
+          description: |
+            Backend сервер для web-интерфейса PTAF 	
+            
+            Лог-файлы:
+            /var/log/uwsgi/app/ui.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 23886ede75344aba877b3a656c063011
+              expression: 'last(/PTAFVM/ui,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/ui,#3)=1'
+              name: 'Сервис ui остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: d9ecc72739b2424bb90b6689df6c0f90
+          name: 'Свободное место в директории /opt'
+          key: 'vfs.fs.size[/opt,pfree]'
+          value_type: FLOAT
+          units: '%'
+          tags:
+            -
+              tag: Application
+              value: General
+          triggers:
+            -
+              uuid: 6fa26873cfb5408cbddb122bec09c971
+              expression: 'avg(/PTAFVM/vfs.fs.size[/opt,pfree],#3)<15'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'avg(/PTAFVM/vfs.fs.size[/opt,pfree],#3)>15'
+              name: 'Остаток свободного места на  хосте {HOSTNAME} в директории /opt  < 15%'
+              priority: AVERAGE
+        -
+          uuid: b69f2898e9af4f08b4b829102525db99
+          name: 'Свободное место в директории /root'
+          key: 'vfs.fs.size[/root,pfree]'
+          value_type: FLOAT
+          units: '%'
+          tags:
+            -
+              tag: Application
+              value: General
+          triggers:
+            -
+              uuid: 8325cbfa56fb45fb9959f896cfb9f255
+              expression: 'avg(/PTAFVM/vfs.fs.size[/root,pfree],#3)<15'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'avg(/PTAFVM/vfs.fs.size[/root,pfree],#3)>15'
+              name: 'Остаток свободного места на  хосте {HOSTNAME} в директории /root  < 15%'
+              priority: AVERAGE
+        -
+          uuid: e197afdc9ab04bc587cab59664ca50b0
+          name: 'PTAF Service : waf-correlator'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.23
+          key: waf-correlator
+          delay: 30s
+          description: |
+            Сервис построения корреляций между событиями
+            
+            Лог-файлы:
+            /var/log/waf/waf-correlator.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 62d2622139d64b9c915233395d95ebdf
+              expression: 'last(/PTAFVM/waf-correlator,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/waf-correlator,#3)=1'
+              name: 'Сервис waf-correlator остановлен'
+              priority: HIGH
+              tags:
+                -
+                  tag: Критичность
+                  value: Высокий
+        -
+          uuid: 88095f29209442788e8c912c5518571d
+          name: 'PTAF Service : waf-gowaf'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.6
+          key: waf-gowaf
+          delay: 30s
+          description: |
+            Сервис обнаружения DDoS и Bot активностей
+            
+            Диагностика:
+            Проверьте, что служба waf-gowaf запущена
+            Убедитесь в наличии открытого UDP-сокета на порту 15042
+            Убедитесь в регулярном получении syslog-сообщений на UDP-порте 15042      (на PTAF должны приходить запросы)
+            
+            Лог-файлы:
+            /var/log/waf/waf-gowaf.log
+            /var/log/waf/waf-active-bots.log
+            /var/log/waf/waf-passive-bots.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 67290ec72c9d4adea79f0f267098e09d
+              expression: 'last(/PTAFVM/waf-gowaf,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/waf-gowaf,#3)=1'
+              name: 'Сервис waf-gowaf остановлен'
+              priority: HIGH
+              tags:
+                -
+                  tag: Критичность
+                  value: Высокий
+        -
+          uuid: 0cac09e4be544ee58fe5c379850b63d2
+          name: 'PTAF Service : waf-nginx'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.4
+          key: waf-nginx
+          delay: 15s
+          description: |
+            Веб-сервер nginx с модулем Application Firewall
+            
+            Диагностика и известные проблемы:
+            waf-nginx: troubleshooting
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1101/254/waf-nginx-troubleshooting
+            waf-nginx: GZIP сжатие
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1012/227/
+            waf-nginx: не работает авторизация ЕСИА
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1012/227
+            waf-nginx: пользовательские директивы
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1106/254/waf-nginx-polzovatelskie-direktivy
+            
+            Лог-файлы:
+            /var/log/waf/error.log
+            /var/log/waf/access.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 747e3052c931487a9894d9c531eea872
+              expression: 'last(/PTAFVM/waf-nginx,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/waf-nginx,#3)=1'
+              name: 'Сервис waf-nginx остановлен'
+              priority: DISASTER
+              tags:
+                -
+                  tag: Критичность
+                  value: Аварийный
+        -
+          uuid: 0ab0977f81fe43779b4df67af6a7e717
+          name: 'PTAF Service : waf-sync'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.5
+          key: waf-sync
+          delay: 2m
+          description: |
+            Сервис выполняющий конфигурацию других сервисов внутри системы
+            
+            Диагностика проблем:
+            
+            Обязательно убедитесь, что активирован Gateway в разделе Configuration / Network / Gateways
+            Убедитесь что hostname PT AF в Gateways в UI совпадает с hostname в CLI. Если имена не совпадают, необходимо:
+            очистить содержимое коллекции db.gateways.remove({})
+            выполнить wsc -c 'config sync'
+            активировать Gateway и назначить алиасы на нужные интерфейсы в разделе Configuration / Network / Gateways
+            Проверьте лог-файл /var/log/waf/waf-sync.log на наличие ошибок.
+            
+            Лог-файлы:
+            /var/log/waf/waf-sync.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 314c6266db1a4af8a61da58910513076
+              expression: 'last(/PTAFVM/waf-sync,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/waf-sync,#3)=1'
+              name: 'Сервис waf-sync остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: 1744f74dd15a4f488d8f6254311e96c3
+          name: 'PTAF Service : waf-trainer'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.2
+          key: waf-trainer
+          description: |
+            Сервис обучения HMM протектора
+            
+            Диагностика:
+            Убедитесь что сервис и его зависимости запущены
+            Убедитесь что сервис слушает на порту 4000 (tcp) и 3680 (udp)
+            Проверьте лог-файлы сервиса на наличие ошибок
+            
+            Лог-файлы:
+            /var/log/waf/trainer.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 065b8a049c59470aa130a93fb2bb6101
+              expression: 'last(/PTAFVM/waf-trainer,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/waf-trainer,#3)=1'
+              name: 'Сервис waf-trainer остановлен'
+              priority: AVERAGE
+              tags:
+                -
+                  tag: Критичность
+                  value: Средний
+        -
+          uuid: 2f7ee37cedff443db4d756192bccf595
+          name: 'PTAF Service : waf-wafd'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.3
+          key: waf-wafd
+          delay: 15s
+          description: |
+            Демон Application Firewall, выполняющий тяжелые задачи транспортной логики
+            
+            Лог-файлы:
+            /var/log/waf/wafd.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 7b641dde6215415e8777652ae1b2d140
+              expression: 'last(/PTAFVM/waf-wafd,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/waf-wafd,#3)=1'
+              name: 'Сервис waf-wafd остановлен'
+              priority: DISASTER
+              tags:
+                -
+                  tag: Критичность
+                  value: Аварийный
+        -
+          uuid: 01d45230f47944f8b3a96f116495be15
+          name: 'PTAF Service : waf_api'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.9
+          key: waf_api
+          description: |
+            REST API сервер для конфигурирования продукта (UI)
+            
+            Диагностика и известные проблемы:
+            
+            Не работает API: не добавляется настройка Client Real IP adress from header через WAF API
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1065/240/ne-rabotaet-api-ne-dobavlyaetsya-nastrojka-client-real-ip-adress-from-header-cherez-waf-api
+            Не работает API: требуется wafjs_location при изменении web-приложения из API
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1041/240/ne-rabotaet-api-trebuetsya-wafjs_location-pri-izmenenii-web-prilozheniya-iz-api
+            
+            Лог-файлы:
+            /var/log/uwsgi/app/waf_api.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 98cc892c588d4b61b46c87b2059c361f
+              expression: 'last(/PTAFVM/waf_api,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/waf_api,#3)=1'
+              name: 'Сервис waf_api остановлен'
+              priority: AVERAGE
+              tags:
+                -
+                  tag: Критичность
+                  value: Средний
+        -
+          uuid: 5cfd029d992e4c25880e7dcee5a59c3d
+          name: 'PTAF Service : wsc-daemon'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.1
+          key: wsc-daemon
+          delay: 2m
+          description: |
+            Демон WSC конфигуратора. 
+            
+            Сервис для начальной инициализации настроек системы, например, сетевые настройки системы, конфигурация кластера, включение или выключение некоторых сервисных функций продукта, которые необходимы при интеграциях со сторонними системами. С данным сервисом взаимодействует консольная утилита wsc, а также данный сервис содержит внутреннюю БД sqlite. Если он остановлен, WSC не запустится.
+            
+            Диагностика и известные проблемы:
+            
+            WSC: troubleshooting
+            https://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1107/254/wsc-troubleshooting
+            
+            Лог-файлы: 
+            /var/log/waf/wsc-config-commit.log
+            /var/log/waf/wsc-daemon.log
+            /var/log/waf/wsc.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: fefea5cddc88450eb712e688e3a0db3a
+              expression: 'last(/PTAFVM/wsc-daemon,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/wsc-daemon,#3)=1'
+              name: 'Сервис wsc-daemon остановлен'
+              priority: WARNING
+              tags:
+                -
+                  tag: Критичность
+                  value: Низкий
+        -
+          uuid: bac3c9bcd9384adeb0fe8d480b1009d2
+          name: 'PTAF Service : wsc_api'
+          type: SNMP_AGENT
+          snmp_oid: .1.3.6.1.4.1.50213.100.1.2.10
+          key: wsc_api
+          description: |
+            REST API сервер для начальной конфигурации продукта (WSC)
+            
+            Лог-файлы:
+            /var/log/uwsgi/app/wsc_api.log
+          valuemap:
+            name: serviceStatus
+          tags:
+            -
+              tag: Application
+              value: 'PTAF Services'
+          triggers:
+            -
+              uuid: 56e523119e7d4e1da150e380b53b016c
+              expression: 'last(/PTAFVM/wsc_api,#3)<>1'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/PTAFVM/wsc_api,#3)=1'
+              name: 'Сервис wsc_api остановлен'
+              priority: AVERAGE
+              tags:
+                -
+                  tag: Критичность
+                  value: Средний
+      valuemaps:
+        -
+          uuid: 2eb9d6be5cf9452ba98fba842ceeff84
+          name: serviceStatus
+          mappings:
+            -
+              value: '1'
+              newvalue: Запущен
+            -
+              value: '2'
+              newvalue: 'Не запуще'
+            -
+              value: '3'
+              newvalue: Остановлен
+            -
+              value: '4'
+              newvalue: 'Сервис отсутствует в системе'
+  graphs:
+    -
+      uuid: 4ebbdd1028fc4adfa732647e087607a7
+      name: 'Занимаемый объем памяти ОЗУ'
+      graph_items:
+        -
+          sortorder: '1'
+          color: 790E1F
+          item:
+            host: PTAFVM
+            key: memory.carbon
+        -
+          sortorder: '2'
+          color: 87AC4D
+          item:
+            host: PTAFVM
+            key: memory.celery
+        -
+          sortorder: '3'
+          color: E89DF4
+          item:
+            host: PTAFVM
+            key: memory.celerybeat
+        -
+          sortorder: '4'
+          color: 1A7C11
+          item:
+            host: PTAFVM
+            key: memory.diamond
+        -
+          sortorder: '5'
+          color: F63100
+          item:
+            host: PTAFVM
+            key: memory.elasticsearch
+        -
+          sortorder: '6'
+          color: 2774A4
+          item:
+            host: PTAFVM
+            key: memory.graphite
+        -
+          sortorder: '7'
+          color: A54F10
+          item:
+            host: PTAFVM
+            key: memory.keepalived
+        -
+          sortorder: '8'
+          color: FC6EA3
+          item:
+            host: PTAFVM
+            key: memory.libreoffice
+        -
+          sortorder: '9'
+          color: 6C59DC
+          item:
+            host: PTAFVM
+            key: memory.nginx
+        -
+          sortorder: '10'
+          color: AC8C14
+          item:
+            host: PTAFVM
+            key: memory.redis
+        -
+          sortorder: '11'
+          color: 611F27
+          item:
+            host: PTAFVM
+            key: memory.taperedng
+        -
+          sortorder: '12'
+          color: F230E0
+          item:
+            host: PTAFVM
+            key: memory.waf-correlator
+        -
+          sortorder: '13'
+          color: 5CCD18
+          item:
+            host: PTAFVM
+            key: memory.waf-gowaf
+        -
+          sortorder: '14'
+          color: BB2A02
+          item:
+            host: PTAFVM
+            key: memory.waf-nginx
+        -
+          sortorder: '15'
+          color: 5A2B57
+          item:
+            host: PTAFVM
+            key: memory.waf-trainer
+        -
+          sortorder: '16'
+          color: 89ABF8
+          item:
+            host: PTAFVM
+            key: memory.waf-wafd
+        -
+          sortorder: '17'
+          color: 7EC25C
+          item:
+            host: PTAFVM
+            key: memory.waf_api
+        -
+          sortorder: '18'
+          color: '274482'
+          item:
+            host: PTAFVM
+            key: memory.wsc_api
+    -
+      uuid: d2dc317ad758473facac6be50f97c3be
+      name: 'Процент загрузки CPU'
+      show_work_period: 'NO'
+      show_triggers: 'NO'
+      graph_items:
+        -
+          sortorder: '1'
+          color: 1A7C11
+          item:
+            host: PTAFVM
+            key: cpuPercent.waf-nginx
