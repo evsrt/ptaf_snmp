@@ -1,0 +1,1817 @@
+{
+    "zabbix_export": {
+        "version": "5.4",
+        "date": "2023-01-18T09:33:44Z",
+        "groups": [
+            {
+                "uuid": "dc579cd7a1a34222933f24f52a68bcd8",
+                "name": "Linux servers"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "578439bc4c8045d3822713ce70913576",
+                "template": "PTAFVM",
+                "name": "PTAFVM",
+                "groups": [
+                    {
+                        "name": "Linux servers"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "242034ed4d6447b4bc0d8ceef7336e5b",
+                        "name": "PTAF Service : aksusbd",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.28",
+                        "key": "aksusbd",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "426d21a07d824642bfd46b8761bd4bbf",
+                                "expression": "last(/PTAFVM/aksusbd,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/aksusbd,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 aksusbd \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "event_name": "aksusbd",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "12f1c4c88ea74f93b9f6aea7c224b02f",
+                        "name": "PTAF Service : autodiscovery",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.27",
+                        "key": "autodiscovery",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f \u0434\u043b\u044f autowizard",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "50beb3ed4d9a4c8384abf338aee7abd7",
+                                "expression": "last(/PTAFVM/autodiscovery,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/autodiscovery,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 autodiscovery \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1e7fd77dd46e4f9082774fed8c28acbe",
+                        "name": "PTAF Service : c-icap",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.24",
+                        "key": "c-icap",
+                        "delay": "2m",
+                        "description": "ICAP-\u0441\u0435\u0440\u0432\u0435\u0440 \u0434\u043b\u044f \u0441\u0435\u0440\u0432\u0438\u0441\u043e\u0432 \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0449\u0438\u0445 \u043f\u043e \u043f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0443 ICAP\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/c-icap/access.log\n/var/log/c-icap/server.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "fc04d210dfc747bfb90eaf64aa885e17",
+                                "expression": "last(/PTAFVM/c-icap,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/c-icap,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 c-icap \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "eb4591700d7c404d8940de4cc53a335f",
+                        "name": "PTAF Service : carbon",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.16",
+                        "key": "carbon",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f \u043c\u0435\u0442\u0440\u0438\u043a\u00a0\u0434\u043b\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "08ea20b5b6484e119f00c2558c852dfb",
+                                "expression": "last(/PTAFVM/carbon,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/carbon,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 carbon \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "78f93b4792994801a38c2a972e214264",
+                        "name": "PTAF Service : celery",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.12",
+                        "key": "celery",
+                        "description": "\u0412\u0441\u043f\u043e\u043c\u043e\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u0435\u0440\u0432\u0438\u0441 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u0447\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/celery/worker1.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "a8e39e5c17b442f082e186de5a48ff14",
+                                "expression": "last(/PTAFVM/celery,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/celery,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 celery \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "AVERAGE",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "87ff4fd792544639a5c136814e5d870a",
+                        "name": "PTAF Service : celerybeat",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.13",
+                        "key": "celerybeat",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u0447\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/celerybeat/celerybeat.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "2bd27a3a392a4bee8fdea66443af3e05",
+                                "expression": "last(/PTAFVM/celerybeat,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/celerybeat,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 celerybeat \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "AVERAGE",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "83451f18763840568d62a48ed53bf7cf",
+                        "name": "PTAF Service : clamav-fresh",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.26",
+                        "key": "clamav-fresh",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445 \u0434\u043b\u044f \u0430\u043d\u0442\u0438\u0432\u0438\u0440\u0443\u0441\u0430 ClamAV\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/clamav/clamav.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "bf5c72e761d745eca952a8a1e1d005d1",
+                                "expression": "last(/PTAFVM/clamav-fresh,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/clamav-fresh,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 clamav-fresh \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a6512996724043f7ac6ee7f5fc697e23",
+                        "name": "PTAF Service : clamd",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.25",
+                        "key": "clamd",
+                        "delay": "2m",
+                        "description": "\u0412\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u044b\u0439 \u0430\u043d\u0442\u0438\u0432\u0438\u0440\u0443\u0441 ClamAV\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/clamav/clamav.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "4dde7397f67241739e2a7638bca960bf",
+                                "expression": "last(/PTAFVM/clamd,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/clamd,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 clamd \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a04f1552ccd442839f2cd4d43f76d40c",
+                        "name": "\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438 CPU - waf-nginx",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.15.4",
+                        "key": "cpuPercent.waf-nginx",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438 CPU"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ff302b49058845beaa812d700c5bdd5a",
+                        "name": "\u0412\u0440\u0435\u043c\u044f \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u043e\u0433\u043e \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u0434\u0430\u043d\u043d\u044b\u0445 PTAF",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.17.24",
+                        "key": "dataCollected",
+                        "delay": "1440m",
+                        "trends": "0",
+                        "value_type": "TEXT"
+                    },
+                    {
+                        "uuid": "e1b87e65e28d4d6eb0e364f4d0ad324d",
+                        "name": "PTAF Service : diamond",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.15",
+                        "key": "diamond",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0441\u0431\u043e\u0440\u0430 \u043c\u0435\u0442\u0440\u0438\u043a \u0434\u043b\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "a7ca2104b6b741f78fc43045e4d537c6",
+                                "expression": "last(/PTAFVM/diamond,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/diamond,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 diamond \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "AVERAGE",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f160730c4bd442c79f7672a3bdb94aba",
+                        "name": "PTAF Service : elasticsearch",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.22",
+                        "key": "elasticsearch",
+                        "delay": "30s",
+                        "description": "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u0434\u043b\u044f \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f \u0438\u043d\u0446\u0438\u0434\u0435\u043d\u0442\u043e\u0432 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 (events, alerts, vulnerabilities)\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u0438 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b:\nElasticsearch: troubleshooting\u00a0\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1006/227\nElasticsearch: \u043e\u0447\u0438\u0441\u0442\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1014/227",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "f1febeb5642b4299807f8da0e26ff24e",
+                                "expression": "last(/PTAFVM/elasticsearch,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/elasticsearch,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 elasticsearch \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "HIGH",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "8ea78ecaed6443aeac548797f6f62420",
+                        "name": "PTAF Service : graphite",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.8",
+                        "key": "graphite",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0432\u0438\u0437\u0443\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u0438 \u0434\u0430\u043d\u043d\u044b\u0445\u00a0\u0434\u043b\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "47f5011365da40a2bc1648d3f6674eae",
+                                "expression": "last(/PTAFVM/graphite,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/graphite,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 graphite \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "AVERAGE",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4ea1b38a2ee94a3a9bc0e67fd3ac8a6d",
+                        "name": "PTAF Service : keepalived",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.21",
+                        "key": "keepalived",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0434\u043b\u044f \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f Virtual IPs\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u0438 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b:\nVirtual IP: troubleshooting\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1104/254/\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/syslog",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "6ea86f72c1994bfebd69ae17fad96081",
+                                "expression": "last(/PTAFVM/keepalived,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/keepalived,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 keepalived \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "631903a8e6194941920a7f1df6cfc284",
+                        "name": "PTAF Service : libreoffice",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.17",
+                        "key": "libreoffice",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0434\u043b\u044f \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u0438 pdf \u043e\u0442\u0447\u0435\u0442\u043e\u0432",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "c5c12128b91c47d19c489282cc52e95b",
+                                "expression": "last(/PTAFVM/libreoffice,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/libreoffice,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 libreoffice \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4e1864a178d04deb9f7a1a2e7db9832e",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - carbon",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.16",
+                        "key": "memory.carbon",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "fd824bb883614b97859c2ec6cba113f3",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - celery",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.12",
+                        "key": "memory.celery",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "d495d812296f41c394481ff9d8c29215",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - celerybeat",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.13",
+                        "key": "memory.celerybeat",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1c21a809a76b465daa39e6cf511a46fb",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - diamond",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.15",
+                        "key": "memory.diamond",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3b93b5ec9b304bcfa2ac4581183aa6ae",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - elasticsearch",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.22",
+                        "key": "memory.elasticsearch",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a815584d665740f5ad0c9e11cc32885b",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - graphite",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.8",
+                        "key": "memory.graphite",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e7334b3e7b484902966232cf4a7da607",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - keepalived",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.12",
+                        "key": "memory.keepalived",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2d113c8a2b094e2eacab977c60b02878",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - libreoffice",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.17",
+                        "key": "memory.libreoffice",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7763e4ddc3e44278a297e4f184a52beb",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - nginx",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.11",
+                        "key": "memory.nginx",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c24437923e6c422e974a146c61b00551",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - redis",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.14",
+                        "key": "memory.redis",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "8ccf0bd7541f46268650f6226cb4e72f",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - taperedng",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.19",
+                        "key": "memory.taperedng",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4aaa83de81f4450190558c1f73d5c31c",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - waf-correlator",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.23",
+                        "key": "memory.waf-correlator",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4e6cc9fdacd64e9ca978de5b453f81c5",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - waf-gowaf",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.4",
+                        "key": "memory.waf-gowaf",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4258ca099be44ff0b4c64cc2474121ea",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - waf-nginx",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.6",
+                        "key": "memory.waf-nginx",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "207df376bc9f4a54ba0d3bea6274b0b7",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - waf-trainer",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.2",
+                        "key": "memory.waf-trainer",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "991446a4d2204229aee88ade1f8bd79d",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - waf-wafd",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.3",
+                        "key": "memory.waf-wafd",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1a97eb8ecf3d45df8c732eb262b8e62c",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - waf_api",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.9",
+                        "key": "memory.waf_api",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "d008c4b10e5a4f8a9a24c0437a027781",
+                        "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423 - wsc_api",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.11.10",
+                        "key": "memory.wsc_api",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "[+-]?(\\d*\\.\\d+|\\d+\\.\\d*|\\d+)[^[]*$",
+                                    "\\1"
+                                ]
+                            }
+                        ],
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "52f4c5f01c1a4699a46e4a62fd2cbe69",
+                        "name": "PTAF Service : mongod",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.20",
+                        "key": "mongod",
+                        "delay": "30s",
+                        "description": "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u0434\u043b\u044f \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f \u0432\u0441\u0435\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 PTAF\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u0438 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b:\nMongoDB: troubleshooting\u00a0\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1096/227\nMongoDB: \u043e\u0447\u0438\u0441\u0442\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1010/227\nMongoDB: \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u0430 OpLog\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1009/227",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "342002898eb94d15b0bf29c50206dcd4",
+                                "expression": "last(/PTAFVM/mongod,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/mongod,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 mongod \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "HIGH",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "48f95af41c684596a8e74b81c7b347eb",
+                        "name": "PTAF Service : nginx",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.11",
+                        "key": "nginx",
+                        "delay": "30s",
+                        "description": "Frontend-\u0441\u0435\u0440\u0432\u0435\u0440 \u0434\u043b\u044f web \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 PTAF\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/nginx/access.log\n/var/log/nginx/error.log\n/var/log/nginx/graphite.access.log\n/var/log/nginx/graphite.error.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "868b93fae35d49c69ec2f10a9507c55b",
+                                "expression": "last(/PTAFVM/nginx,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/nginx,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 nginx \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "HIGH",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c430cdfdb6854c86bb788ee490b7b389",
+                        "name": "PTAF License",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.2",
+                        "key": "ptafLicense",
+                        "delay": "60m",
+                        "description": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u0438 \u043a\u0430\u0436\u043d\u044b\u0435 88 \u0434\u043d\u0435\u0439",
+                        "triggers": [
+                            {
+                                "uuid": "74177aeaedd149a782874051a1f09f9f",
+                                "expression": "last(/PTAFVM/ptafLicense)<14",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/ptafLicense)>80",
+                                "name": "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u044e PTAF <14days",
+                                "priority": "HIGH",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "96c3c07997e94d9294ac8f2fbfdbbb66",
+                        "name": "PTAF Service : ptbbs-controller",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.27",
+                        "key": "ptbbs-controller",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0434\u043b\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u0447 WebEngine (BBS)",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "17a5cb8c753c42528f5304421e8a759b",
+                                "expression": "last(/PTAFVM/ptbbs-controller,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/ptbbs-controller,#3)<>1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 ptbbs-controller \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7b1dc9a417a84b349a53172d8259e9b3",
+                        "name": "PTAF Service : ptbbs-service",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.31",
+                        "key": "ptbbs-service",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0434\u043b\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u0447 WebEngine (BBS)",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "01da70d2c341492b8c9ad591086360e9",
+                                "expression": "last(/PTAFVM/ptbbs-service,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/ptbbs-service,#3)<>1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 ptbbs-service \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9bc46e294fb74c46a5d58acd85f0dc52",
+                        "name": "PTAF Service : rabbitmq-server",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.30",
+                        "key": "rabbitmq-server",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0434\u043b\u044f \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f \u043e\u0447\u0435\u0440\u0435\u0434\u0435\u0439 \u043d\u0430 \u0437\u0430\u043f\u0443\u0441\u043a \u0437\u0430\u0434\u0430\u0447 \u043f\u043e \u0441\u043a\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0439 \u0447\u0435\u0440\u0435\u0437 WebEngine (BBS)\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c:\u00a0\n\nRabbitMQ: troubleshooting\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1103/254/\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b\n/var/log/rabbitmq/*",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "1f582b182807481ebda99ef8975bfaf1",
+                                "expression": "last(/PTAFVM/rabbitmq-server,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/rabbitmq-server,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 rabbitmq-server \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0c5a70d546604f3eab028c15541b71b6",
+                        "name": "PTAF Service : redis",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.14",
+                        "key": "redis",
+                        "delay": "30s",
+                        "description": "\u0411\u0414 \u0434\u043b\u044f \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f \u043a\u044d\u0448\u0430 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0439 \u0438 \u043e\u0447\u0435\u0440\u0435\u0434\u0438 \u0437\u0430\u0434\u0430\u0447 celery\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c:\u00a0\nRedis: troubleshooting\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1105/254\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/redis/redis-server.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "4dfae426f26b46ebacb7b356cd676d1a",
+                                "expression": "last(/PTAFVM/redis,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/redis,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 redis \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "HIGH",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "56116e508aac42a0b3d3a6c341aca850",
+                        "name": "PTAF Service : taperedng",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.19",
+                        "key": "taperedng",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441, \u0440\u0435\u0430\u043b\u0438\u0437\u0443\u044e\u0449\u0438\u0439 \u0440\u0430\u0431\u043e\u0442\u0443 WAF \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0441\u043d\u0438\u0444\u0444\u0435\u0440\u0430\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c:\u00a0\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u044b\u0445 \u043f\u0440\u043e\u0431\u043b\u0435\u043c PT AF =>\u00a0\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u043d\u0435\u0438\u0441\u043f\u0440\u0430\u0432\u043d\u043e\u0441\u0442\u0435\u0439 \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0441\u043d\u0438\u0444\u0444\u0435\u0440\u0430\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1100/254\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b\n/var/log/waf/taperedng.log\u00a0#\u043b\u043e\u0433 \u0441\u0430\u043c\u043e\u0433\u043e \u0441\u0435\u0440\u0432\u0438\u0441\u0430\n/var/log/waf/stats.log #\u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430 \u043f\u043e \u0441\u0435\u0441\u0441\u0438\u044f\u043c",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "2a31d64fe8b34a9c8a764b29d2063603",
+                                "expression": "last(/PTAFVM/taperedng,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/taperedng,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 taperedng \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "89b221e3b7da4eb8ad5214daa4f29ace",
+                        "name": "PTAF Service : tasks-control",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.29",
+                        "key": "tasks-control",
+                        "delay": "2m",
+                        "description": "\u0412\u0441\u043f\u043e\u043c\u043e\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u0435\u0440\u0432\u0438\u0441 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u0447\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/celery_control/control.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "9295b4f51bc64db48155b34c170fb20d",
+                                "expression": "last(/PTAFVM/tasks-control,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/tasks-control,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 tasks-control \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "d2507a6c5c9c4567941d1e9e66d913e4",
+                        "name": "PTAF Service : tproxy-automangle",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.18",
+                        "key": "tproxy-automangle",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441\u00a0\u0434\u043b\u044f \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u044f MAC-\u0430\u0434\u0440\u0435\u0441\u043e\u0432 \u0437\u0430\u0449\u0438\u0449\u0430\u0435\u043c\u044b\u0445\u00a0\u0443\u0437\u043b\u043e\u0432 \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 transparent proxy\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b\n/var/log/waf/tproxy-automangle.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "120103b952df4be99151f1611c0c4da7",
+                                "expression": "last(/PTAFVM/tproxy-automangle,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/tproxy-automangle,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 tproxy-automangle \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "35d4b324de0e43339aa9ebea63fcbdb1",
+                        "name": "PTAF Service : ui",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.7",
+                        "key": "ui",
+                        "delay": "2m",
+                        "description": "Backend \u0441\u0435\u0440\u0432\u0435\u0440 \u0434\u043b\u044f web-\u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 PTAF \t\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/uwsgi/app/ui.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "23886ede75344aba877b3a656c063011",
+                                "expression": "last(/PTAFVM/ui,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/ui,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 ui \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "d9ecc72739b2424bb90b6689df6c0f90",
+                        "name": "\u0421\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u043c\u0435\u0441\u0442\u043e \u0432 \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440\u0438\u0438 /opt",
+                        "key": "vfs.fs.size[/opt,pfree]",
+                        "value_type": "FLOAT",
+                        "units": "%",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "General"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "6fa26873cfb5408cbddb122bec09c971",
+                                "expression": "avg(/PTAFVM/vfs.fs.size[/opt,pfree],#3)<15",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "avg(/PTAFVM/vfs.fs.size[/opt,pfree],#3)>15",
+                                "name": "\u041e\u0441\u0442\u0430\u0442\u043e\u043a \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0433\u043e \u043c\u0435\u0441\u0442\u0430 \u043d\u0430  \u0445\u043e\u0441\u0442\u0435 {HOSTNAME} \u0432 \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440\u0438\u0438 /opt  < 15%",
+                                "priority": "AVERAGE"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "b69f2898e9af4f08b4b829102525db99",
+                        "name": "\u0421\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u043c\u0435\u0441\u0442\u043e \u0432 \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440\u0438\u0438 /root",
+                        "key": "vfs.fs.size[/root,pfree]",
+                        "value_type": "FLOAT",
+                        "units": "%",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "General"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "8325cbfa56fb45fb9959f896cfb9f255",
+                                "expression": "avg(/PTAFVM/vfs.fs.size[/root,pfree],#3)<15",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "avg(/PTAFVM/vfs.fs.size[/root,pfree],#3)>15",
+                                "name": "\u041e\u0441\u0442\u0430\u0442\u043e\u043a \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0433\u043e \u043c\u0435\u0441\u0442\u0430 \u043d\u0430  \u0445\u043e\u0441\u0442\u0435 {HOSTNAME} \u0432 \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440\u0438\u0438 /root  < 15%",
+                                "priority": "AVERAGE"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e197afdc9ab04bc587cab59664ca50b0",
+                        "name": "PTAF Service : waf-correlator",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.23",
+                        "key": "waf-correlator",
+                        "delay": "30s",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0439 \u043c\u0435\u0436\u0434\u0443 \u0441\u043e\u0431\u044b\u0442\u0438\u044f\u043c\u0438\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/waf/waf-correlator.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "62d2622139d64b9c915233395d95ebdf",
+                                "expression": "last(/PTAFVM/waf-correlator,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/waf-correlator,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 waf-correlator \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "HIGH",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "88095f29209442788e8c912c5518571d",
+                        "name": "PTAF Service : waf-gowaf",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.6",
+                        "key": "waf-gowaf",
+                        "delay": "30s",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u0438\u044f DDoS \u0438 Bot \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0435\u0439\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430:\n\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435, \u0447\u0442\u043e \u0441\u043b\u0443\u0436\u0431\u0430 waf-gowaf \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430\n\u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c \u0432 \u043d\u0430\u043b\u0438\u0447\u0438\u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u043e\u0433\u043e UDP-\u0441\u043e\u043a\u0435\u0442\u0430 \u043d\u0430 \u043f\u043e\u0440\u0442\u0443 15042\n\u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c \u0432 \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e\u043c \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0438 syslog-\u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439 \u043d\u0430 UDP-\u043f\u043e\u0440\u0442\u0435 15042      (\u043d\u0430 PTAF \u0434\u043e\u043b\u0436\u043d\u044b \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442\u044c \u0437\u0430\u043f\u0440\u043e\u0441\u044b)\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/waf/waf-gowaf.log\n/var/log/waf/waf-active-bots.log\n/var/log/waf/waf-passive-bots.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "67290ec72c9d4adea79f0f267098e09d",
+                                "expression": "last(/PTAFVM/waf-gowaf,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/waf-gowaf,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 waf-gowaf \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "HIGH",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0412\u044b\u0441\u043e\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0cac09e4be544ee58fe5c379850b63d2",
+                        "name": "PTAF Service : waf-nginx",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.4",
+                        "key": "waf-nginx",
+                        "delay": "15s",
+                        "description": "\u0412\u0435\u0431-\u0441\u0435\u0440\u0432\u0435\u0440 nginx \u0441 \u043c\u043e\u0434\u0443\u043b\u0435\u043c Application Firewall\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u0438 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b:\nwaf-nginx: troubleshooting\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1101/254/waf-nginx-troubleshooting\nwaf-nginx: GZIP \u0441\u0436\u0430\u0442\u0438\u0435\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1012/227/\nwaf-nginx: \u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f \u0415\u0421\u0418\u0410\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1012/227\nwaf-nginx: \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0435 \u0434\u0438\u0440\u0435\u043a\u0442\u0438\u0432\u044b\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1106/254/waf-nginx-polzovatelskie-direktivy\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/waf/error.log\n/var/log/waf/access.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "747e3052c931487a9894d9c531eea872",
+                                "expression": "last(/PTAFVM/waf-nginx,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/waf-nginx,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 waf-nginx \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "DISASTER",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0410\u0432\u0430\u0440\u0438\u0439\u043d\u044b\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0ab0977f81fe43779b4df67af6a7e717",
+                        "name": "PTAF Service : waf-sync",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.5",
+                        "key": "waf-sync",
+                        "delay": "2m",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u044e\u0449\u0438\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044e \u0434\u0440\u0443\u0433\u0438\u0445 \u0441\u0435\u0440\u0432\u0438\u0441\u043e\u0432 \u0432\u043d\u0443\u0442\u0440\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u044b\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c:\n\n\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0430\u043a\u0442\u0438\u0432\u0438\u0440\u043e\u0432\u0430\u043d Gateway \u0432 \u0440\u0430\u0437\u0434\u0435\u043b\u0435 Configuration / Network / Gateways\n\u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c \u0447\u0442\u043e hostname PT AF \u0432 Gateways \u0432 UI \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u0435\u0442 \u0441 hostname \u0432 CLI. \u0415\u0441\u043b\u0438 \u0438\u043c\u0435\u043d\u0430 \u043d\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u044e\u0442, \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e:\n\u043e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u043c\u043e\u0435 \u043a\u043e\u043b\u043b\u0435\u043a\u0446\u0438\u0438 db.gateways.remove({})\n\u0432\u044b\u043f\u043e\u043b\u043d\u0438\u0442\u044c wsc -c 'config sync'\n\u0430\u043a\u0442\u0438\u0432\u0438\u0440\u043e\u0432\u0430\u0442\u044c Gateway \u0438 \u043d\u0430\u0437\u043d\u0430\u0447\u0438\u0442\u044c \u0430\u043b\u0438\u0430\u0441\u044b \u043d\u0430 \u043d\u0443\u0436\u043d\u044b\u0435 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u044b \u0432 \u0440\u0430\u0437\u0434\u0435\u043b\u0435 Configuration / Network / Gateways\n\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u043b\u043e\u0433-\u0444\u0430\u0439\u043b /var/log/waf/waf-sync.log \u043d\u0430 \u043d\u0430\u043b\u0438\u0447\u0438\u0435 \u043e\u0448\u0438\u0431\u043e\u043a.\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/waf/waf-sync.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "314c6266db1a4af8a61da58910513076",
+                                "expression": "last(/PTAFVM/waf-sync,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/waf-sync,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 waf-sync \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1744f74dd15a4f488d8f6254311e96c3",
+                        "name": "PTAF Service : waf-trainer",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.2",
+                        "key": "waf-trainer",
+                        "description": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f HMM \u043f\u0440\u043e\u0442\u0435\u043a\u0442\u043e\u0440\u0430\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430:\n\u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c \u0447\u0442\u043e \u0441\u0435\u0440\u0432\u0438\u0441 \u0438 \u0435\u0433\u043e \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u044b\n\u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c \u0447\u0442\u043e \u0441\u0435\u0440\u0432\u0438\u0441 \u0441\u043b\u0443\u0448\u0430\u0435\u0442 \u043d\u0430 \u043f\u043e\u0440\u0442\u0443 4000 (tcp) \u0438 3680 (udp)\n\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u043b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b \u0441\u0435\u0440\u0432\u0438\u0441\u0430 \u043d\u0430 \u043d\u0430\u043b\u0438\u0447\u0438\u0435 \u043e\u0448\u0438\u0431\u043e\u043a\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/waf/trainer.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "065b8a049c59470aa130a93fb2bb6101",
+                                "expression": "last(/PTAFVM/waf-trainer,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/waf-trainer,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 waf-trainer \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "AVERAGE",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2f7ee37cedff443db4d756192bccf595",
+                        "name": "PTAF Service : waf-wafd",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.3",
+                        "key": "waf-wafd",
+                        "delay": "15s",
+                        "description": "\u0414\u0435\u043c\u043e\u043d Application Firewall, \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u044e\u0449\u0438\u0439 \u0442\u044f\u0436\u0435\u043b\u044b\u0435 \u0437\u0430\u0434\u0430\u0447\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0439 \u043b\u043e\u0433\u0438\u043a\u0438\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/waf/wafd.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "7b641dde6215415e8777652ae1b2d140",
+                                "expression": "last(/PTAFVM/waf-wafd,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/waf-wafd,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 waf-wafd \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "DISASTER",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0410\u0432\u0430\u0440\u0438\u0439\u043d\u044b\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "01d45230f47944f8b3a96f116495be15",
+                        "name": "PTAF Service : waf_api",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.9",
+                        "key": "waf_api",
+                        "description": "REST API \u0441\u0435\u0440\u0432\u0435\u0440 \u0434\u043b\u044f \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430 (UI)\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u0438 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b:\n\n\u041d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 API: \u043d\u0435 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 Client Real IP adress from header \u0447\u0435\u0440\u0435\u0437 WAF API\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1065/240/ne-rabotaet-api-ne-dobavlyaetsya-nastrojka-client-real-ip-adress-from-header-cherez-waf-api\n\u041d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 API: \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f wafjs_location \u043f\u0440\u0438 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0438 web-\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0438\u0437 API\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1041/240/ne-rabotaet-api-trebuetsya-wafjs_location-pri-izmenenii-web-prilozheniya-iz-api\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/uwsgi/app/waf_api.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "98cc892c588d4b61b46c87b2059c361f",
+                                "expression": "last(/PTAFVM/waf_api,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/waf_api,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 waf_api \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "AVERAGE",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "5cfd029d992e4c25880e7dcee5a59c3d",
+                        "name": "PTAF Service : wsc-daemon",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.1",
+                        "key": "wsc-daemon",
+                        "delay": "2m",
+                        "description": "\u0414\u0435\u043c\u043e\u043d WSC \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0442\u043e\u0440\u0430.\u00a0\n\n\u0421\u0435\u0440\u0432\u0438\u0441 \u0434\u043b\u044f \u043d\u0430\u0447\u0430\u043b\u044c\u043d\u043e\u0439 \u0438\u043d\u0438\u0446\u0438\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u0438 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a \u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \u0441\u0435\u0442\u0435\u0432\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u044b, \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044f \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0430, \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u0438\u043b\u0438 \u0432\u044b\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u0441\u0435\u0440\u0432\u0438\u0441\u043d\u044b\u0445 \u0444\u0443\u043d\u043a\u0446\u0438\u0439 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u044b \u043f\u0440\u0438 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f\u0445 \u0441\u043e \u0441\u0442\u043e\u0440\u043e\u043d\u043d\u0438\u043c\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u043c\u0438. \u0421 \u0434\u0430\u043d\u043d\u044b\u043c \u0441\u0435\u0440\u0432\u0438\u0441\u043e\u043c \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442 \u043a\u043e\u043d\u0441\u043e\u043b\u044c\u043d\u0430\u044f \u0443\u0442\u0438\u043b\u0438\u0442\u0430 wsc, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0434\u0430\u043d\u043d\u044b\u0439 \u0441\u0435\u0440\u0432\u0438\u0441 \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u044e\u044e \u0411\u0414 sqlite. \u0415\u0441\u043b\u0438 \u043e\u043d \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d, WSC \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0441\u044f.\n\n\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u0438 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b:\n\nWSC: troubleshooting\nhttps://support.ptsecurity.com/index.php?/Knowledgebase/Article/View/1107/254/wsc-troubleshooting\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\u00a0\n/var/log/waf/wsc-config-commit.log\n/var/log/waf/wsc-daemon.log\n/var/log/waf/wsc.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "fefea5cddc88450eb712e688e3a0db3a",
+                                "expression": "last(/PTAFVM/wsc-daemon,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/wsc-daemon,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 wsc-daemon \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "WARNING",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u041d\u0438\u0437\u043a\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "bac3c9bcd9384adeb0fe8d480b1009d2",
+                        "name": "PTAF Service : wsc_api",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.50213.100.1.2.10",
+                        "key": "wsc_api",
+                        "description": "REST API \u0441\u0435\u0440\u0432\u0435\u0440 \u0434\u043b\u044f \u043d\u0430\u0447\u0430\u043b\u044c\u043d\u043e\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430 (WSC)\n\n\u041b\u043e\u0433-\u0444\u0430\u0439\u043b\u044b:\n/var/log/uwsgi/app/wsc_api.log",
+                        "valuemap": {
+                            "name": "serviceStatus"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "PTAF Services"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "56e523119e7d4e1da150e380b53b016c",
+                                "expression": "last(/PTAFVM/wsc_api,#3)<>1",
+                                "recovery_mode": "RECOVERY_EXPRESSION",
+                                "recovery_expression": "last(/PTAFVM/wsc_api,#3)=1",
+                                "name": "\u0421\u0435\u0440\u0432\u0438\u0441 wsc_api \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d",
+                                "priority": "AVERAGE",
+                                "tags": [
+                                    {
+                                        "tag": "\u041a\u0440\u0438\u0442\u0438\u0447\u043d\u043e\u0441\u0442\u044c",
+                                        "value": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "valuemaps": [
+                    {
+                        "uuid": "2eb9d6be5cf9452ba98fba842ceeff84",
+                        "name": "serviceStatus",
+                        "mappings": [
+                            {
+                                "value": "1",
+                                "newvalue": "\u0417\u0430\u043f\u0443\u0449\u0435\u043d"
+                            },
+                            {
+                                "value": "2",
+                                "newvalue": "\u041d\u0435 \u0437\u0430\u043f\u0443\u0449\u0435"
+                            },
+                            {
+                                "value": "3",
+                                "newvalue": "\u041e\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d"
+                            },
+                            {
+                                "value": "4",
+                                "newvalue": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0435"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "graphs": [
+            {
+                "uuid": "4ebbdd1028fc4adfa732647e087607a7",
+                "name": "\u0417\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u044b\u0439 \u043e\u0431\u044a\u0435\u043c \u043f\u0430\u043c\u044f\u0442\u0438 \u041e\u0417\u0423",
+                "graph_items": [
+                    {
+                        "sortorder": "1",
+                        "color": "790E1F",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.carbon"
+                        }
+                    },
+                    {
+                        "sortorder": "2",
+                        "color": "87AC4D",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.celery"
+                        }
+                    },
+                    {
+                        "sortorder": "3",
+                        "color": "E89DF4",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.celerybeat"
+                        }
+                    },
+                    {
+                        "sortorder": "4",
+                        "color": "1A7C11",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.diamond"
+                        }
+                    },
+                    {
+                        "sortorder": "5",
+                        "color": "F63100",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.elasticsearch"
+                        }
+                    },
+                    {
+                        "sortorder": "6",
+                        "color": "2774A4",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.graphite"
+                        }
+                    },
+                    {
+                        "sortorder": "7",
+                        "color": "A54F10",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.keepalived"
+                        }
+                    },
+                    {
+                        "sortorder": "8",
+                        "color": "FC6EA3",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.libreoffice"
+                        }
+                    },
+                    {
+                        "sortorder": "9",
+                        "color": "6C59DC",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.nginx"
+                        }
+                    },
+                    {
+                        "sortorder": "10",
+                        "color": "AC8C14",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.redis"
+                        }
+                    },
+                    {
+                        "sortorder": "11",
+                        "color": "611F27",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.taperedng"
+                        }
+                    },
+                    {
+                        "sortorder": "12",
+                        "color": "F230E0",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.waf-correlator"
+                        }
+                    },
+                    {
+                        "sortorder": "13",
+                        "color": "5CCD18",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.waf-gowaf"
+                        }
+                    },
+                    {
+                        "sortorder": "14",
+                        "color": "BB2A02",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.waf-nginx"
+                        }
+                    },
+                    {
+                        "sortorder": "15",
+                        "color": "5A2B57",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.waf-trainer"
+                        }
+                    },
+                    {
+                        "sortorder": "16",
+                        "color": "89ABF8",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.waf-wafd"
+                        }
+                    },
+                    {
+                        "sortorder": "17",
+                        "color": "7EC25C",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.waf_api"
+                        }
+                    },
+                    {
+                        "sortorder": "18",
+                        "color": "274482",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "memory.wsc_api"
+                        }
+                    }
+                ]
+            },
+            {
+                "uuid": "d2dc317ad758473facac6be50f97c3be",
+                "name": "\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438 CPU",
+                "show_work_period": "NO",
+                "show_triggers": "NO",
+                "graph_items": [
+                    {
+                        "sortorder": "1",
+                        "color": "1A7C11",
+                        "item": {
+                            "host": "PTAFVM",
+                            "key": "cpuPercent.waf-nginx"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
